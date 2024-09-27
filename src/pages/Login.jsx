@@ -1,3 +1,4 @@
+import styles from "./Login.module.css";
 import { Form } from "../components/Form";
 
 import { useEffect, useState } from "react";
@@ -21,8 +22,8 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ width: "350px", margin: "0 auto" }}>
-        <h1>Добро пожаловать</h1>
+      <div className={styles.card}>
+        <h1 className={styles.title}>Добро пожаловать</h1>
         <Form userLogin={userLogin} setUserLogin={setUserLogin} />
       </div>
       {/* <ul>
