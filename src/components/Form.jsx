@@ -1,3 +1,5 @@
+import styles from './Form.module.css'
+
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth/auth";
@@ -12,11 +14,11 @@ export function Form({ userLogin, setUserLogin }) {
 
   function isValide() {
     if (userLogin.login === "user" && userLogin.password === "user") {
-      console.log("Correct user");
       setIsAuth(true)
       navigate('/main')
       return setTitle(null)
     } else {
+      setIsAuth(false)
       return setTitle("Введите корректные данные");
     }
   }
@@ -62,7 +64,7 @@ export function Form({ userLogin, setUserLogin }) {
             })
           }
         />
-        <Button btnEvent={login}>Вход </Button>
+        <Button className={styles.enter} btnEvent={login}>Вход </Button>
       </form>
       <h3 style={{ color: "red" }}>{title}</h3>
     </div>
