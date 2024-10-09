@@ -16,6 +16,16 @@ function App() {
     {
       path: "/main",
       element: <MainNews />,
+      children: [
+        {
+          index: true,
+          element: <p>Sikeld was here</p>
+        },
+        {
+          path: 'news',
+          element: <h3>!!!!</h3>,
+        },
+      ]
     },
   ]);
 

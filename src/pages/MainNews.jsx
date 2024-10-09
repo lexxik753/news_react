@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-import Button from "../components/UI/Button";
+import Header from "../components/header/Header";
 
 export default function MainNews() {
-
 
   return (
     <main>
       <h1>Главная страница новостей</h1>
-      <Button><Link to={'/'}> Выход </Link></Button>
+      <Header />
+      <Outlet />
     </main>
   );
 }
