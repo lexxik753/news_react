@@ -34,7 +34,6 @@ export function Form({ userLogin, setUserLogin }) {
         password: "",
       };
     });
-  console.log(isAuth)  
 
   }
   return (
