@@ -1,15 +1,26 @@
-import { createBrowserRouter, RouterProvider, useParams } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import { AuthContext } from "./context/auth/auth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Login from "./pages/Login";
 import MainNews from "./pages/MainNews";
 import AllNews from "./components/news/AllNews";
+import NewsItem from "./components/news/NewsItem";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const params = useParams()
-  const newsId  = params.id
+  const [news, setNews] = useState([])
+
+  useEffect(() => {
+      const fetchNews = async () => {
+          const newsData = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+          const json = await newsData.json()
+          console.log(json, 'news!');
+          setNews(json)
+      }
+      fetchNews()
+  }, [])
+  
   const router = createBrowserRouter([
     {
       path: "/",
@@ -25,11 +36,11 @@ function App() {
         },
         {
           path: 'news',
-          element: <AllNews />,
+          element: <AllNews news={news}/>,
         },
         {
           path: 'news/:id',
-          element: `${newsId}`
+          element: <NewsItem news={news}/>
         }
       ]
     },
