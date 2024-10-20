@@ -15,7 +15,6 @@ function App() {
       const fetchNews = async () => {
           const newsData = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
           const json = await newsData.json()
-          console.log(json, 'news!');
           setNews(json)
       }
       fetchNews()
